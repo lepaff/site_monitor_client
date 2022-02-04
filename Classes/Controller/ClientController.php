@@ -6,6 +6,7 @@ namespace LEPAFF\SiteMonitorClient\Controller;
 
 use MCStreetguy\ComposerParser\Factory as ComposerParser;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\View\JsonView;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
@@ -71,9 +72,8 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         }
 
         // find current page uid
-        $contentObj = $this->configurationManager->getContentObject();
-        $currentPageUid = $contentObj->data['pid'];
-        $site = $siteFinder->getSiteByPageId($currentPageUid);
+        $siteFinder = GeneralUtility::makeInstance(SiteFinder::class);
+        $site = $siteFinder->getSiteByPageId($GLOBALS['TSFE']->id);
 
         // Using JsonView for JSON output - see:
         // https://docs.typo3.org/m/typo3/book-extbasefluid/main/en-us/8-Fluid/2-using-different-output-formats.html#using-built-in-jsonview
