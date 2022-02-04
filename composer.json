@@ -1,0 +1,48 @@
+{
+    "name": "mp/site-monitor-client",
+    "type": "typo3-cms-extension",
+    "description": "Client for monitor extension",
+    "authors": [
+        {
+            "name": "Michael Paffrath",
+            "role": "Developer"
+        }
+    ],
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "typo3/cms-core": "^10.4",
+        "mcstreetguy/composer-parser": "^1.1"
+    },
+    "require-dev": {
+        "typo3/testing-framework": "^6.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "MP\\SiteMonitorClient\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MP\\SiteMonitorClient\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "typo3-ter/site-monitor-client": "self.version"
+    },
+    "config": {
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
+        ]
+    },
+    "extra": {
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": ".Build/public",
+            "extension-key": "site_monitor_client"
+        }
+    }
+}

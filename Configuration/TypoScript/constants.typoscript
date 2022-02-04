@@ -1,0 +1,14 @@
+plugin.tx_sitemonitorclient_client {
+    view {
+        # cat=plugin.tx_sitemonitorclient_client/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:site_monitor_client/Resources/Private/Templates/
+        # cat=plugin.tx_sitemonitorclient_client/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:site_monitor_client/Resources/Private/Partials/
+        # cat=plugin.tx_sitemonitorclient_client/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:site_monitor_client/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_sitemonitorclient_client//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}
