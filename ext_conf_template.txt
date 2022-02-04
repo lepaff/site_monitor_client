@@ -1,0 +1,2 @@
+# cat=basic/enable; type=string; label=Expected Value of the get Parameter
+secret = 1
