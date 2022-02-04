@@ -1,5 +1,5 @@
 <?php
-namespace MP\SiteMonitorClient\Domain\Model;
+namespace LEPAFF\SiteMonitorClient\Domain\Model;
 
 
 /***
@@ -20,14 +20,14 @@ class Client extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * title
-     * 
+     *
      * @var string
      */
     protected $title = '';
 
     /**
      * Returns the title
-     * 
+     *
      * @return string $title
      */
     public function getTitle()
@@ -37,7 +37,7 @@ class Client extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the title
-     * 
+     *
      * @param string $title
      * @return void
      */

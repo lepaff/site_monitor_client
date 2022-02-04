@@ -1,5 +1,5 @@
 <?php
-namespace MP\SiteMonitorClient\Controller;
+namespace LEPAFF\SiteMonitorClient\Controller;
 
 use MCStreetguy\ComposerParser\Factory as ComposerParser;
 use TYPO3\CMS\Core\Core\Environment;
@@ -37,14 +37,14 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     /**
      * clientRepository
      *
-     * @var \MP\SiteMonitorClient\Domain\Repository\ClientRepository
+     * @var \LEPAFF\SiteMonitorClient\Domain\Repository\ClientRepository
      */
     protected $clientRepository = null;
 
     /**
-     * @param \MP\SiteMonitorClient\Domain\Repository\ClientRepository $clientRepository
+     * @param \LEPAFF\SiteMonitorClient\Domain\Repository\ClientRepository $clientRepository
      */
-    public function injectClientRepository(\MP\SiteMonitorClient\Domain\Repository\ClientRepository $clientRepository)
+    public function injectClientRepository(\LEPAFF\SiteMonitorClient\Domain\Repository\ClientRepository $clientRepository)
     {
         $this->clientRepository = $clientRepository;
     }

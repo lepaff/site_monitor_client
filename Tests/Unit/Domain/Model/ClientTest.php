@@ -1,5 +1,5 @@
 <?php
-namespace MP\SiteMonitorClient\Tests\Unit\Domain\Model;
+namespace LEPAFF\SiteMonitorClient\Tests\Unit\Domain\Model;
 
 /**
  * Test case.
@@ -9,14 +9,14 @@ namespace MP\SiteMonitorClient\Tests\Unit\Domain\Model;
 class ClientTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
 {
     /**
-     * @var \MP\SiteMonitorClient\Domain\Model\Client
+     * @var \LEPAFF\SiteMonitorClient\Domain\Model\Client
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \MP\SiteMonitorClient\Domain\Model\Client();
+        $this->subject = new \LEPAFF\SiteMonitorClient\Domain\Model\Client();
     }
 
     protected function tearDown()

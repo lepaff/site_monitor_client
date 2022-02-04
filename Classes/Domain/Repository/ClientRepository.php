@@ -1,5 +1,5 @@
 <?php
-namespace MP\SiteMonitorClient\Domain\Repository;
+namespace LEPAFF\SiteMonitorClient\Domain\Repository;
 
 
 /***

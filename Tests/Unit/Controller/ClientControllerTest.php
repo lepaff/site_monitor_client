@@ -1,5 +1,5 @@
 <?php
-namespace MP\SiteMonitorClient\Tests\Unit\Controller;
+namespace LEPAFF\SiteMonitorClient\Tests\Unit\Controller;
 
 /**
  * Test case.
@@ -9,14 +9,14 @@ namespace MP\SiteMonitorClient\Tests\Unit\Controller;
 class ClientControllerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
 {
     /**
-     * @var \MP\SiteMonitorClient\Controller\ClientController
+     * @var \LEPAFF\SiteMonitorClient\Controller\ClientController
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = $this->getMockBuilder(\MP\SiteMonitorClient\Controller\ClientController::class)
+        $this->subject = $this->getMockBuilder(\LEPAFF\SiteMonitorClient\Controller\ClientController::class)
             ->setMethods(['redirect', 'forward', 'addFlashMessage'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -37,7 +37,7 @@ class ClientControllerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCas
             ->disableOriginalConstructor()
             ->getMock();
 
-        $clientRepository = $this->getMockBuilder(\MP\SiteMonitorClient\Domain\Repository\ClientRepository::class)
+        $clientRepository = $this->getMockBuilder(\LEPAFF\SiteMonitorClient\Domain\Repository\ClientRepository::class)
             ->setMethods(['findAll'])
             ->disableOriginalConstructor()
             ->getMock();

@@ -1,5 +1,5 @@
 {
-    "name": "m-p/site-monitor-client",
+    "name": "lepaff/site-monitor-client",
     "type": "typo3-cms-extension",
     "description": "Client for site monitor extension",
     "authors": [
@@ -14,12 +14,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MP\\SiteMonitorClient\\": "Classes"
+            "LEPAFF\\SiteMonitorClient\\": "Classes"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MP\\SiteMonitorClient\\Tests\\": "Tests"
+            "LEPAFF\\SiteMonitorClient\\Tests\\": "Tests"
         }
     },
     "replace": {
