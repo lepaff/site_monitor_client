@@ -6,7 +6,7 @@ call_user_func(
     {
 
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-            'MP.SiteMonitorClient',
+            'LEPAFF.SiteMonitorClient',
             'Client',
             [
                 'Client' => 'list'
@@ -37,12 +37,12 @@ call_user_func(
            }'
         );
 		$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
-		
+
 			$iconRegistry->registerIcon(
 				'site_monitor_client-plugin-client',
 				\TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
 				['source' => 'EXT:site_monitor_client/Resources/Public/Icons/user_plugin_client.svg']
 			);
-		
+
     }
 );
