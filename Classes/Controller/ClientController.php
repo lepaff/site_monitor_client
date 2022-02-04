@@ -77,7 +77,11 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             if (is_object($youngestPatch)) {
                 $youngestPatch = $youngestPatch->getVersion();
             }
-            if ($youngestPatch && version_compare($installedTYPO3Version, $youngestPatch, '<')) {
+            if (
+                $youngestPatch &&
+                version_compare($installedTYPO3Version, $youngestPatch, '<') &&
+                $youngestPatch !== $installedTYPO3Version
+            ) {
                 $patchAvailable = $youngestPatch;
             }
         }
