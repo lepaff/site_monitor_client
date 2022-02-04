@@ -3,6 +3,7 @@ namespace LEPAFF\SiteMonitorClient\Controller;
 
 use MCStreetguy\ComposerParser\Factory as ComposerParser;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\View\JsonView;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
@@ -81,7 +82,6 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             }
         }
 
-
         // Collect installed packages/extensions - if in composer mode
         if ($coreUpdateComposerMode === true) {
             $composerFilePath = Environment::getProjectPath() . '/composer.json';
@@ -92,6 +92,10 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             $lockPackages = $lockfile->getPackages();
         }
 
+        // find current page uid
+        $siteFinder = GeneralUtility::makeInstance(SiteFinder::class);
+        $site = $siteFinder->getSiteByPageId($GLOBALS['TSFE']->id);
+
         // Using JsonView for JSON output - see:
         // https://docs.typo3.org/m/typo3/book-extbasefluid/main/en-us/8-Fluid/2-using-different-output-formats.html#using-built-in-jsonview
         // https://gist.github.com/arnekolja/ee9152e15e8f440773ad
@@ -99,6 +103,7 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         // $jsonView->setControllerContext($this->controllerContext);
 
         $this->view->assignMultiple([
+            'websiteTitle' => $site->getConfiguration()['websiteTitle'],
             'phpVersion' => phpversion(),
             'typo3Version' => $installedTYPO3Version,
             'typo3Context' => Environment::getContext(),
@@ -107,6 +112,7 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             'patchAvailable' => $patchAvailable,
         ]);
         $this->view->setVariablesToRender([
+            'websiteTitle',
             'phpVersion',
             'typo3Version',
             'patchAvailable',
