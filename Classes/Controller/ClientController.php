@@ -1,7 +1,4 @@
 <?php
-
-declare(strict_types=1);
-
 namespace MP\SiteMonitorClient\Controller;
 
 use MCStreetguy\ComposerParser\Factory as ComposerParser;
@@ -12,15 +9,16 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Install\Service\CoreUpdateService;
 use TYPO3\CMS\Install\Service\CoreVersionService;
 
-/**
- * This file is part of the "Website monitor client" Extension for TYPO3 CMS.
+/***
+ *
+ * This file is part of the "Site monitor client" Extension for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- * (c) 2022 Michael Paffrath <michael.paffrath@gmail.com>, Antwerpes AG
- */
-
+ *  (c) 2022 Michael Paffrath <michael.paffrath@gmail.com>, Antwerpes AG
+ *
+ ***/
 /**
  * ClientController
  */
@@ -37,11 +35,26 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     protected $defaultViewObjectName = \TYPO3\CMS\Extbase\Mvc\View\JsonView::class;
 
     /**
+     * clientRepository
+     *
+     * @var \MP\SiteMonitorClient\Domain\Repository\ClientRepository
+     */
+    protected $clientRepository = null;
+
+    /**
+     * @param \MP\SiteMonitorClient\Domain\Repository\ClientRepository $clientRepository
+     */
+    public function injectClientRepository(\MP\SiteMonitorClient\Domain\Repository\ClientRepository $clientRepository)
+    {
+        $this->clientRepository = $clientRepository;
+    }
+
+    /**
      * action list
      *
-     * @return string|object|null|void
+     * @return void
      */
-    public function renderJsonAction()
+    public function listAction()
     {
         $coreUpdateService = GeneralUtility::makeInstance(CoreUpdateService::class);
         $coreVersionService = GeneralUtility::makeInstance(CoreVersionService::class);
@@ -49,16 +62,25 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         $coreUpdateEnabled = $coreUpdateService->isCoreUpdateEnabled();
         $coreUpdateComposerMode = Environment::isComposerMode();
 
-        // Check if update is available
+        // https://get.typo3.org/api/doc
+        // check if system can connect to outside urls
+        // @todo
+        $outsideWorks = $this->urlExists();
+
         $installedTYPO3Version = $coreVersionService->getInstalledVersion();
-        $youngestPatch = $coreVersionService->getYoungestPatchRelease();
-        $patchAvailable = false;
-        if (is_object($youngestPatch)) {
-            $youngestPatch = $youngestPatch->getVersion();
+
+        if ($outsideWorks) {
+            // Check if update is available
+            $youngestPatch = $coreVersionService->getYoungestPatchRelease();
+            $patchAvailable = false;
+            if (is_object($youngestPatch)) {
+                $youngestPatch = $youngestPatch->getVersion();
+            }
+            if ($youngestPatch && version_compare($installedTYPO3Version, $youngestPatch, '<')) {
+                $patchAvailable = $youngestPatch;
+            }
         }
-        if ($youngestPatch && version_compare($installedTYPO3Version, $youngestPatch, '<')) {
-            $patchAvailable = $youngestPatch;
-        }
+
 
         // Collect installed packages/extensions - if in composer mode
         if ($coreUpdateComposerMode === true) {
@@ -94,5 +116,24 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         ]);
 
         // return $jsonView->render();
+    }
+
+    private function urlExists()  {
+        // @todo
+        $url = 'https://get.typo3.org/v1/api/major/9/release/latest';
+
+        if($url == NULL) return false;
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $data = curl_exec($ch);
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        if($httpcode>=200 && $httpcode<300){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -1,3 +1,4 @@
+
 plugin.tx_sitemonitorclient_client {
     view {
         # cat=plugin.tx_sitemonitorclient_client/file; type=string; label=Path to template root (FE)

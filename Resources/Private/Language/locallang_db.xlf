@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:site_monitor_client/Resources/Private/Language/locallang_db" date="2022-02-04T11:43:41Z" product-name="site_monitor_client">
+		<header/>
+		<body>
+			<trans-unit id="tx_sitemonitorclient_domain_model_client" resname="tx_sitemonitorclient_domain_model_client">
+				<source>Client</source>
+			</trans-unit>
+			<trans-unit id="tx_sitemonitorclient_domain_model_client.title" resname="tx_sitemonitorclient_domain_model_client.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_site_monitor_client_client.name" resname="tx_site_monitor_client_client.name">
+				<source>Client</source>
+			</trans-unit>
+			<trans-unit id="tx_site_monitor_client_client.description" resname="tx_site_monitor_client_client.description">
+				<source>Client plugin</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

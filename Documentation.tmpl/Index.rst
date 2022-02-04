@@ -9,7 +9,7 @@
 .. _start:
 
 =============================================================
-Website monitor client
+Site monitor client
 =============================================================
 
 :Version:
@@ -29,7 +29,7 @@ Website monitor client
    `CC BY-NC-SA 4.0 <https://creativecommons.org/licenses/by-nc-sa/4.0/>`__ (Creative Commons)
    license
 
-Client for the monitor Extension (TYPO3) websites
+Client for site monitor extension
 
 **TYPO3**
 
@@ -38,7 +38,7 @@ a GNU/GPL CMS/Framework available from `typo3.org <https://typo3.org/>`_ .
 
 **Community Documentation**
 
-This documentation is community documentation for the TYPO3 extension Website monitor client
+This documentation is community documentation for the TYPO3 extension Site monitor client
 
 It is maintained as part of this third party extension.
 

@@ -1,3 +1,4 @@
+
 plugin.tx_sitemonitorclient_client {
     view {
         templateRootPaths.0 = EXT:site_monitor_client/Resources/Private/Templates/
@@ -15,6 +16,8 @@ plugin.tx_sitemonitorclient_client {
         #skipDefaultArguments = 1
         # if set to 1, the enable fields are ignored in BE context
         ignoreAllEnableFieldsInBe = 0
+        # Should be on by default, but can be disabled if all action in the plugin are uncached
+        requireCHashArgumentForActionArguments = 1
     }
     mvc {
         #callDefaultActionIfActionCantBeResolved = 1
@@ -22,17 +25,18 @@ plugin.tx_sitemonitorclient_client {
 }
 
 // PAGE object for Ajax call:
-monitor_client_page = PAGE
-monitor_client_page {
-  typeNum = 92877378
-  10 < tt_content.list.20.sitemonitorclient_client
+site_monitor_client_page = PAGE
+site_monitor_client_page {
+    typeNum = 1234567
 
-  config {
-    disableAllHeaderCode = 1
-    additionalHeaders = Content-Type: application/json
-    xhtml_cleaning = 0
-    debug = 0
-    no_cache = 1
-    admPanel = 0
-  }
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders = Content-Type: application/json
+        xhtml_cleaning = 0
+        debug = 1
+        no_cache = 1
+        admPanel = 0
+    }
+
+    10 < tt_content.list.20.sitemonitorclient_client
 }
