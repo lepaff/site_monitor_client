@@ -6,11 +6,11 @@ defined('TYPO3_MODE') || die();
         'SiteMonitorClient',
         'Client',
         [
-            \MP\SiteMonitorClient\Controller\ClientController::class => 'renderJson'
+            \LEPAFF\SiteMonitorClient\Controller\ClientController::class => 'renderJson'
         ],
         // non-cacheable actions
         [
-            \MP\SiteMonitorClient\Controller\ClientController::class => 'renderJson'
+            \LEPAFF\SiteMonitorClient\Controller\ClientController::class => 'renderJson'
         ]
     );
 

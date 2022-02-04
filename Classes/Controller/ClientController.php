@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MP\SiteMonitorClient\Controller;
+namespace LEPAFF\SiteMonitorClient\Controller;
 
 use MCStreetguy\ComposerParser\Factory as ComposerParser;
 use TYPO3\CMS\Core\Core\Environment;
