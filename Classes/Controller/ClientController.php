@@ -91,6 +91,7 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             'patchAvailable' => $patchAvailable,
         ]);
         $this->view->setVariablesToRender([
+            'websiteTitle',
             'phpVersion',
             'typo3Version',
             'patchAvailable',
