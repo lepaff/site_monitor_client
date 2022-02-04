@@ -70,6 +70,11 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             $lockPackages = $lockfile->getPackages();
         }
 
+        // find current page uid
+        $contentObj = $this->configurationManager->getContentObject();
+        $currentPageUid = $contentObj->data['pid'];
+        $site = $siteFinder->getSiteByPageId($currentPageUid);
+
         // Using JsonView for JSON output - see:
         // https://docs.typo3.org/m/typo3/book-extbasefluid/main/en-us/8-Fluid/2-using-different-output-formats.html#using-built-in-jsonview
         // https://gist.github.com/arnekolja/ee9152e15e8f440773ad
@@ -77,6 +82,7 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         // $jsonView->setControllerContext($this->controllerContext);
 
         $this->view->assignMultiple([
+            'websiteTitle' => $site->getConfiguration()['websiteTitle'],
             'phpVersion' => phpversion(),
             'typo3Version' => $installedTYPO3Version,
             'typo3Context' => Environment::getContext(),
