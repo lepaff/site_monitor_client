@@ -52,6 +52,9 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 
         // Check if update is available
         $installedTYPO3Version = $coreVersionService->getInstalledVersion();
+
+        // @todo - move this block into site-monitor extension
+        // major version is sufficient to get the rest of the info
         $youngestPatch = $coreVersionService->getYoungestPatchRelease();
         $patchAvailable = false;
         if (is_object($youngestPatch)) {
@@ -64,6 +67,7 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         ) {
             $patchAvailable = $youngestPatch;
         }
+        // @todo - move this block into site-monitor extension
 
         // Collect installed packages/extensions - if in composer mode
         if ($coreUpdateComposerMode === true) {
