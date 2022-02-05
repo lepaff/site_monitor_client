@@ -27,7 +27,7 @@ plugin.tx_sitemonitorclient_client {
 // PAGE object for Ajax call:
 site_monitor_client_page = PAGE
 site_monitor_client_page {
-    typeNum = 1234567
+    typeNum = 92877378
 
     config {
         disableAllHeaderCode = 1
