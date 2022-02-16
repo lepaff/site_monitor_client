@@ -96,9 +96,11 @@ class ClientController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             'typo3Context' => Environment::getContext(),
             'composerPackages' => $composerPackages,
             'lockPackages' => $lockPackages,
+            'lockDate' => filemtime($lockFilePath),
             'patchAvailable' => $patchAvailable,
         ]);
         $this->view->setVariablesToRender([
+            'lockDate',
             'websiteTitle',
             'phpVersion',
             'typo3Version',
